@@ -1,5 +1,6 @@
 package com.sena.ecommerce.model;
 
+
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -9,52 +10,47 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-//anotaciones jpa
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer id;
-	private String Nombre;
-	private String Username;
-	private String Email;
-	private String Documento;
-	private String Direccion;
-	private String Telefono;
-	private String Password;
+	private String nombre;
+	private String email;
+	private String direccion;
+	private String identificacion;
+	private String telefono;
+	private String password;
 	private String tipo;
+
+	@OneToMany(mappedBy = "usuario")
+	private List<Producto> productos;
 	
-	//relaciones DB(database)
-
 	@OneToMany(mappedBy = "usuario")
+	private List<Orden> ordenes;
 
-	private List<Producto> Produtos;
-
-	@OneToMany(mappedBy = "usuario")
-	private List<Orden> Ordenes;
-
-	// metodo contructor vacio
+	// contructor vacio o sin campos
 	public Usuario() {
 
 	}
 
-	// metodo constructor con campos
-	public Usuario(Integer id, String nombre, String username, String email, String documento, String direccion,
-			String telefono, String password, String tipo) {
+	// contructor con campos
+
+	public Usuario(Integer id, String nombre, String email, String direccion, String identificacion, String telefono,
+			String password, String tipo) {
 		super();
 		this.id = id;
-		Nombre = nombre;
-		Username = username;
-		Email = email;
-		Documento = documento;
-		Direccion = direccion;
-		Telefono = telefono;
-		Password = password;
+		this.nombre = nombre;
+		this.email = email;
+		this.direccion = direccion;
+		this.identificacion = identificacion;
+		this.telefono = telefono;
+		this.password = password;
 		this.tipo = tipo;
 	}
 
+	// getters and seters
 	public Integer getId() {
 		return id;
 	}
@@ -64,59 +60,51 @@ public class Usuario {
 	}
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
-	}
-
-	public String getUsername() {
-		return Username;
-	}
-
-	public void setUsername(String username) {
-		Username = username;
+		this.nombre = nombre;
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
-	}
-
-	public String getDocumento() {
-		return Documento;
-	}
-
-	public void setDocumento(String documento) {
-		Documento = documento;
+		this.email = email;
 	}
 
 	public String getDireccion() {
-		return Direccion;
+		return direccion;
 	}
 
 	public void setDireccion(String direccion) {
-		Direccion = direccion;
+		this.direccion = direccion;
+	}
+
+	public String getIdentificacion() {
+		return identificacion;
+	}
+
+	public void setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
 	}
 
 	public String getTelefono() {
-		return Telefono;
+		return telefono;
 	}
 
 	public void setTelefono(String telefono) {
-		Telefono = telefono;
+		this.telefono = telefono;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 
 	public String getTipo() {
@@ -125,15 +113,14 @@ public class Usuario {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+
 	}
-	
-	//metodo tostring
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", Nombre=" + Nombre + ", Username=" + Username + ", Email=" + Email
-				+ ", Documento=" + Documento + ", Direccion=" + Direccion + ", Telefono=" + Telefono + ", Password="
-				+ Password + ", tipo=" + tipo + "]";
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", email=" + email + ", direccion=" + direccion
+				+ ", identificacion=" + identificacion + ", telefono=" + telefono + ", password=" + password + ", tipo="
+				+ tipo + "]";
 	}
 
 }

@@ -47,9 +47,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
 	}
 
 	@Override
-	public Optional<Usuario> FinByEmail(String Email) {
+	public Optional<Usuario> FinByEmail(String email) {
 		// TODO Auto-generated method stub
-		return usuariorepository.findByEmail(Email);
+		return usuariorepository.findByEmail(email);
 	}
 
 	@Override

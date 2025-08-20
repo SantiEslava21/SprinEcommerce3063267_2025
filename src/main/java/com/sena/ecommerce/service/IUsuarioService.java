@@ -17,7 +17,7 @@ public interface IUsuarioService {
 
 	public Optional<Usuario> FinbyId(Integer id);
 
-	public Optional<Usuario> FinByEmail(String Email);
+	public Optional<Usuario> FinByEmail(String email);
 
 	List<Usuario> Findall();
 
