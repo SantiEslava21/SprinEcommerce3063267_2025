@@ -67,7 +67,7 @@ public class ProductoController {
 		Usuario u = new Usuario(1, "", "", "", "", "", "", "");
 		producto.setUsuario(u);
 		productoservice.update(producto);
-		return "redirct:/productos";
+		return "redirect:/productos";
 	}
 
 	// metodo para eliminar con id un producto
